@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Charts</title>
+	<style>
+		body {
+			background: #303334;
+		}
+		.left-box {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			margin: 2em;
+		}
+		.right-box {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 50%;
+			margin: 2em;
+		}
+	</style>
+</head>
+<body>
+	<div class="left-box">
+		<canvas id="chart-1"></canvas>
+	</div>
+
+	<div class="right-box">
+		<canvas id="chart-2" class="chart"></canvas>
+	</div>
+	
+	<script type="text/javascript" src="./node_modules/chart.js/dist/Chart.min.js"></script>
+	<script>
+		var tooltipOptions = {
+			mode: 'point',
+			displayColors: false,
+			cornerRadius: 0,
+			caretSize: 0,
+			backgroundColor: '#fff',
+			titleFontColor: '#303334',
+			bodyFontColor: '#303334',
+			titleFontFamily: '"Montserrat", Arial, sans-serif',
+			bodyFontFamily: '"Montserrat", Arial, sans-serif'
+		}
+
+		var gridLineOptions = {
+			color: ['#fff'],
+			lineWidth: 2,
+			zeroLineColor: '#fff',
+			zeroLineWidth: 2
+		}
+
+		var chart1  = new Chart("chart-1", {
+			type: 'bar',
+			data: {
+				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+		        datasets: [{
+		            data: [12, 19, 3, 5, 2, 3],
+		            backgroundColor: '#9DBF3E',
+		            borderWidth: 0
+		        }]
+			},
+			options: {
+				legend: {
+					display: false
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						barThickness: 15,
+						ticks: {
+							minRotation: 25,
+							fontFamily: '"Montserrat", Arial, sans-serif',
+							fontColor: '#9DBF3E'
+						},
+						gridLines: gridLineOptions
+					}],
+					yAxes: [{
+						display: false
+					}],
+				},
+				tooltips: tooltipOptions
+			}
+		})
+
+		var chart2  = new Chart("chart-2", {
+			type: 'line',
+			data: {
+				labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+		        datasets: [{
+		            data: [12, 19, 3, 5, 2, 3],
+		            backgroundColor: '#9DBF3E',
+		            borderWidth: 0,
+		            pointRadius: 4
+		        }]
+			},
+			options: {
+				legend: {
+					display: false
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						ticks: {
+							fontFamily: '"Montserrat", Arial, sans-serif',
+							fontColor: '#9DBF3E'
+						},
+						gridLines: gridLineOptions
+					}],
+					yAxes: [{
+						display: false
+					}],
+				},
+				tooltips: tooltipOptions
+			}
+		})
+	</script>
+</body>
+</html>
